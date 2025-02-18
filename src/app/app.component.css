@@ -1,0 +1,15 @@
+header {
+  background-color: #c8102e;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 5px 8px #dadada;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
