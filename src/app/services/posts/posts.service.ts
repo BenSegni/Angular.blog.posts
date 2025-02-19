@@ -1,13 +1,12 @@
-import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { GlobalService } from '../global/global.service';
 import { IPost } from './interfaces/post.interface';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { config } from '../../config/api.config';
 
 @Injectable()
-export class PostsService {
-  private readonly _http: HttpClient = inject(HttpClient);
-
+export class PostsService extends GlobalService {
   public getPosts(): Observable<Array<IPost>> {
-    return this._http.get<Array<IPost>>('http://localhost:3000/posts');
+    return this.http.get<Array<IPost>>(`${this.baseUrl}${this.port}/posts`);
   }
 }
