@@ -2,7 +2,6 @@ import { GlobalService } from '../global/global.service';
 import { IPost } from './interfaces/post.interface';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { config } from '../../config/api.config';
 
 @Injectable()
 export class PostsService extends GlobalService {
