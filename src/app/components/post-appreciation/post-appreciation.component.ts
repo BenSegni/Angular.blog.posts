@@ -5,6 +5,7 @@ import {
   inject,
   input,
   model,
+  signal,
 } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -19,7 +20,11 @@ import { PostAppreciationService } from '../../services/post-appreciation/post-a
 export class PostAppreciationComponent implements OnDestroy {
   public appreciation = model.required<number>();
   public readonly postId = input.required<string>();
-  public hasVoted = false;
+  public hasNotVoted = signal(true);
+  public cannotVote = computed(
+    () => this.appreciation() && !this.hasNotVoted()
+  );
+
   private _postAppreciationService = inject(PostAppreciationService);
   private destroy$ = new Subject<void>();
 
@@ -38,16 +43,16 @@ export class PostAppreciationComponent implements OnDestroy {
       .appreciatePost(this.postId(), appreciation)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: () => (this.hasVoted = true),
+        next: () => this.hasNotVoted.set(false),
         error: (error) => {
           console.error(error);
           this.appreciation.set(appreciation - 1);
-          this.hasVoted = false;
+          this.hasNotVoted.set(true);
         },
       });
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }
