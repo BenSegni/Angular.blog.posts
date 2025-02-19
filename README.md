@@ -27,7 +27,7 @@ When the user interacts with the like or dislike button,
 To start a local development API server, run:
 
 ```bash
-ng serve-api
+npm run serve-api
 ```
 Runs a local api providing the following endpoints,
 
