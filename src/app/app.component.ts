@@ -4,10 +4,10 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrl: './app.component.scss',
   standalone: true,
   imports: [RouterOutlet],
 })
 export class AppComponent {
-  title = 'angular-take-home-test';
+  title = 'Angular blog';
 }
