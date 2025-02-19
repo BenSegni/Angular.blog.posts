@@ -1,0 +1,39 @@
+.post-appreciation-wrapper {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+
+  &__like-count {
+    text-align: center;
+    width: 2.5rem;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    cursor: pointer;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 10rem;
+    border: 1px solid #c1c1c1;
+    background-color: #f2f2f2;
+
+    &:hover {
+      background-color: #cb0d6b;
+      color: white;
+      border: 2px solid black;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      border: 1px solid #c1c1c1;
+      background-color: #f2f2f2;
+
+      &:hover {
+        color: #c1c1c1;
+      }
+    }
+  }
+}
