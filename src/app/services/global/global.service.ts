@@ -9,9 +9,6 @@ import { config } from '../../config/api.config';
 export class GlobalService {
   public readonly http: HttpClient = inject(HttpClient);
   public readonly baseUrl: string = isDevMode()
-    ? config.development.endpoint
-    : config.production.endpoint;
-  public readonly port: string = isDevMode()
-    ? config.development.port
-    : config.production.port;
+    ? `${config.development.endpoint}${config.development.port}`
+    : `${config.production.endpoint}${config.production.port}`;
 }

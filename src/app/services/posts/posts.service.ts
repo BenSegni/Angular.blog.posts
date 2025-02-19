@@ -7,6 +7,6 @@ import { config } from '../../config/api.config';
 @Injectable()
 export class PostsService extends GlobalService {
   public getPosts(): Observable<Array<IPost>> {
-    return this.http.get<Array<IPost>>(`${this.baseUrl}${this.port}/posts`);
+    return this.http.get<Array<IPost>>(`${this.baseUrl}/posts`);
   }
 }
