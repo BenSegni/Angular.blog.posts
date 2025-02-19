@@ -1,4 +1,7 @@
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 
 import { GlobalService } from './global.service';
 import { TestBed } from '@angular/core/testing';
@@ -9,10 +12,7 @@ describe('GlobalService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-              provideHttpClient(withInterceptorsFromDi()),
-              provideHttpClientTesting(),
-            ],
+      providers: [provideHttpClient(), provideHttpClientTesting()],
     });
     service = TestBed.inject(GlobalService);
   });
