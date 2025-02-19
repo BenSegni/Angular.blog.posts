@@ -1,5 +1,5 @@
 <div class="post-appreciation-wrapper">
   <button class="post-appreciation-wrapper__button" (click)="unappreciate()" [disabled]="hasVoted">&minus;</button>
-  <p class="post-appreciation-wrapper__like-count">{{ likeCount() }}</p>
+  <p class="post-appreciation-wrapper__like-count">{{ appreciation() }}</p>
   <button class="post-appreciation-wrapper__button" (click)="appreciate()" [disabled]="hasVoted">&plus;</button>
 </div>

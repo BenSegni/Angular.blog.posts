@@ -19,7 +19,6 @@ import { PostAppreciationService } from '../../services/post-appreciation/post-a
 export class PostAppreciationComponent implements OnDestroy {
   public appreciation = model.required<number>();
   public readonly postId = input.required<string>();
-  public likeCount = computed(() => this.appreciation());
   public hasVoted = false;
   private _postAppreciationService = inject(PostAppreciationService);
   private destroy$ = new Subject<void>();
