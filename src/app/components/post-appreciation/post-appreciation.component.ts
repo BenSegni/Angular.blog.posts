@@ -24,7 +24,7 @@ export class PostAppreciationComponent implements OnDestroy {
   public cannotVote = computed(
     () => this.appreciation() && !this.hasNotVoted()
   );
-  public voteButtonSelected = signal<'appreciate' | 'unappreciate' | null>(
+  public voteButtonSelected = signal<'appreciated' | 'unappreciated' | null>(
     null
   );
 
@@ -36,15 +36,15 @@ export class PostAppreciationComponent implements OnDestroy {
     this.destroy$.complete();
   }
 
-  public appreciate() {
+  public appreciated() {
     this.appreciation.update((currentValue) => currentValue + 1);
-    this.voteButtonSelected.set('appreciate');
+    this.voteButtonSelected.set('appreciated');
     this.sendPostAppreciationUpdate(this.appreciation());
   }
 
-  public unappreciate() {
+  public unappreciated() {
     this.appreciation.update((currentValue) => currentValue - 1);
-    this.voteButtonSelected.set('unappreciate');
+    this.voteButtonSelected.set('unappreciated');
     this.sendPostAppreciationUpdate(this.appreciation());
   }
 

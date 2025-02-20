@@ -35,10 +35,10 @@ describe('PostAppreciationComponent', () => {
         })
       );
 
-      component.appreciate();
+      component.appreciated();
 
       expect(component.appreciation()).toBe(12);
-      expect(component.voteButtonSelected()).toBe('appreciate');
+      expect(component.voteButtonSelected()).toBe('appreciated');
       expect(spyService).toHaveBeenCalledWith('1', 12);
     });
     it('should increment the likeCount value when appreciate is called', () => {
@@ -51,10 +51,10 @@ describe('PostAppreciationComponent', () => {
         })
       );
 
-      component.unappreciate();
+      component.unappreciated();
 
       expect(component.appreciation()).toBe(10);
-      expect(component.voteButtonSelected()).toBe('unappreciate');
+      expect(component.voteButtonSelected()).toBe('unappreciated');
       expect(spyService).toHaveBeenCalledWith('1', 10);
     });
   });
