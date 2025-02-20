@@ -1,5 +1,7 @@
-<div class="post-appreciation-wrapper">
-  <button class="post-appreciation-wrapper__button" (click)="unappreciate()" [disabled]="cannotVote()">&minus;</button>
-  <p class="post-appreciation-wrapper__like-count">{{ appreciation() }}</p>
-  <button class="post-appreciation-wrapper__button" (click)="appreciate()" [disabled]="cannotVote()">&plus;</button>
+<div class="post-appreciation-wrapper" role="group" aria-label="Post appreciation controls">
+  <button class="post-appreciation-wrapper__button" (click)="unappreciate()" [disabled]="cannotVote()"
+    [class.active]="voteButtonSelected() === 'unappreciate'" aria-label="Unappreciate this post">&minus;</button>
+  <p class="post-appreciation-wrapper__like-count" aria-live="polite">{{ appreciation() }}</p>
+  <button class="post-appreciation-wrapper__button" (click)="appreciate()" [disabled]="cannotVote()"
+    [class.active]="voteButtonSelected() === 'appreciate'" aria-label="Appreciate this post">&plus;</button>
 </div>
