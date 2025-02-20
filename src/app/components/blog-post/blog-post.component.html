@@ -1,6 +1,6 @@
 <article class="blog-post-wrapper" aria-labelledby="blog-post-title">
   <h2 id="blog-post-title">{{ blogPost().title }}</h2>
-  <p>{{ blogPost().content }}</p>
-  <app-post-appreciation [appreciation]="blogPost().likeCount" [postId]="blogPost().id"
+  <p id="blog-post-content">{{ blogPost().content }}</p>
+  <app-post-appreciation id="blog-post-appreciation" [appreciation]="blogPost().likeCount" [postId]="blogPost().id"
     aria-label="Blog Post appreciation count"></app-post-appreciation>
 </article>

@@ -1,8 +1,6 @@
 import {
   ComponentFixture,
   TestBed,
-  fakeAsync,
-  tick,
 } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
@@ -21,7 +19,11 @@ describe('AppComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('Testing initial render', () => {
+    it('should render the correct title', () => {
+      expect(fixture.nativeElement.querySelector('h1').textContent).toContain(
+        'Angular blog'
+      );
+    });
   });
 });

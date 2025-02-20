@@ -1,10 +1,8 @@
-import {
-  provideHttpClient,
-  withInterceptorsFromDi,
-} from '@angular/common/http';
-
 import { GlobalService } from './global.service';
 import { TestBed } from '@angular/core/testing';
+import {
+  provideHttpClient,
+} from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('GlobalService', () => {

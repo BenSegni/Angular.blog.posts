@@ -8,10 +8,16 @@ describe('BlogPostsComponent', () => {
   let component: BlogPostsComponent;
   let fixture: ComponentFixture<BlogPostsComponent>;
 
+
   beforeEach(async () => {
+
+
     await TestBed.configureTestingModule({
       imports: [BlogPostsComponent],
-      providers: [provideHttpClient(), provideHttpClientTesting()],
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting(),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(BlogPostsComponent);
@@ -19,7 +25,19 @@ describe('BlogPostsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('Testing Blog Posts Rendering', () => {
+    it('should show error message if subscription fails', () => {
+      component.blogPosts$.subscribe();
+      const errorMessage = fixture.nativeElement.querySelector(
+        '#problem-loading-articles'
+      );
+
+      fixture.detectChanges();
+
+      expect(errorMessage).toBeTruthy();
+      expect(errorMessage.textContent).toContain(
+        'There has been a problem loading the Blog Posts.'
+      );
+    });
   });
 });

@@ -1,11 +1,11 @@
-<div class="blog-posts">
+<section class="blog-posts">
   @if( blogPosts$ | async; as blogPosts ) {
   @for (post of blogPosts; track $index) {
   <app-blog-post [blogPost]="post"></app-blog-post>
   } @empty {
-  <p>No blog posts have been published yet</p>
+  <p id="no-articles-available">No blog posts have been published yet.</p>
   }
   } @else {
-  <p>There has been a problem loading the Blog Posts.</p>
+  <p id="problem-loading-articles">There has been a problem loading the Blog Posts.</p>
   }
-</div>
+</section>

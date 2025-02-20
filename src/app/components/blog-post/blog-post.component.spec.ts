@@ -32,7 +32,19 @@ describe('BlogPostComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should render a blog post article', () => {
+    const title = fixture.nativeElement.querySelector('#blog-post-title');
+    const content = fixture.nativeElement.querySelector('#blog-post-content');
+    const appreciation = fixture.nativeElement.querySelector(
+      '#blog-post-appreciation'
+    );
+
+    fixture.detectChanges();
+
+    expect(title).toBeTruthy();
+    expect(content).toBeTruthy();
+    expect(appreciation).toBeTruthy();
+    expect(title.textContent).toContain('Test Title');
+    expect(content.textContent).toContain('Test Content');
   });
 });
