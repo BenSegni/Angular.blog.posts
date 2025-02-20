@@ -1,0 +1,17 @@
+@import "./color.scss";
+
+:root {
+  --headers: #{$red};
+  --button-background: #{$off-white};
+  --button-active-background: #{$pink};
+  --button-active-border: #{$black};
+  --button-border: #{$light-grey};
+  --button-width: 2.5rem;
+  --button-height: 2.5rem;
+  --appreciation-width: 2.5rem;
+  --shadow: #{$lighter-grey};
+  --darkBg-text: #{$white};
+  --button-font: 1.25rem;
+  --blog-post-wrapper-width: 50vw;
+  --blog-post-border: #{$light-grey};
+}

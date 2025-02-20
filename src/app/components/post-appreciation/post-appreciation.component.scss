@@ -1,39 +1,40 @@
-.post-appreciation-wrapper {
-  margin-top: 1rem;
+@mixin flex-box {
   display: flex;
   align-items: center;
+}
+
+.post-appreciation-wrapper {
+  @include flex-box();
+
+  margin-top: 1rem;
 
   &__like-count {
+    width: var(--appreciation-width);
     text-align: center;
-    width: 2.5rem;
   }
 
   &__button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.25rem;
-    cursor: pointer;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 10rem;
-    border: 1px solid rgb(193, 193, 193);
-    background-color: rgb(242, 242, 242);
+    width: var(--button-width);
+    height: var(--button-height);
 
-    &:hover {
-      background-color: rgb(203, 13, 107);
-      color: rgb(255, 255, 255);
-      border: 2px solid rgb(0, 0, 0);
-    }
+    @include flex-box();
+    justify-content: center;
+
+    background-color: var(--button-background);
+    border: 1px solid var(--button-border);
+    border-radius: 10rem;
+
+    font-size: var(--button-font);
+    cursor: pointer;
 
     &:disabled {
       cursor: not-allowed;
-      border: 1px solid rgb(193, 193, 193);
-      background-color: rgb(242, 242, 242);
+    }
 
-      &:hover {
-        color: rgb(193, 193, 193);
-      }
+    &.active {
+      background-color: var(--button-active-background);
+      color: var(--darkBg-text);
+      border: 2px solid var(--button-active-border);
     }
   }
 }

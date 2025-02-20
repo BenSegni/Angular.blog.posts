@@ -1,11 +1,11 @@
 .site-header {
-  background-color: #c8102e;
-  color: #ffffff;
-  padding: 20px;
-  text-align: center;
   position: sticky;
   top: 0;
-  box-shadow: 0 5px 8px #dadada;
+  padding: 1.25rem;
+  background-color: var(--headers);
+  color: var(--darkBg-text);
+  text-align: center;
+  box-shadow: 0 .25rem .5rem var(--shadow);
 
   &__title {
     margin: 0;
