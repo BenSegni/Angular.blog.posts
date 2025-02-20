@@ -24,17 +24,27 @@ export class PostAppreciationComponent implements OnDestroy {
   public cannotVote = computed(
     () => this.appreciation() && !this.hasNotVoted()
   );
+  public voteButtonSelected = signal<'appreciate' | 'unappreciate' | null>(
+    null
+  );
 
   private _postAppreciationService = inject(PostAppreciationService);
   private destroy$ = new Subject<void>();
 
+  public ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   public appreciate() {
     this.appreciation.update((currentValue) => currentValue + 1);
+    this.voteButtonSelected.set('appreciate');
     this.sendPostAppreciationUpdate(this.appreciation());
   }
 
   public unappreciate() {
     this.appreciation.update((currentValue) => currentValue - 1);
+    this.voteButtonSelected.set('unappreciate');
     this.sendPostAppreciationUpdate(this.appreciation());
   }
 
@@ -50,10 +60,5 @@ export class PostAppreciationComponent implements OnDestroy {
           this.hasNotVoted.set(true);
         },
       });
-  }
-
-  public ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 }
