@@ -17,3 +17,12 @@
   --blog-post-wrapper-width: 50vw;
   --blog-post-border: #{colors.$light-grey};
 }
+
+* {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+}
+
+body {
+  margin: 0;
+}
