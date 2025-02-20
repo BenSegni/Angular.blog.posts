@@ -1,17 +1,19 @@
-@import "./color.scss";
+@use "./color.scss" as colors;
 
 :root {
-  --headers: #{$red};
-  --button-background: #{$off-white};
-  --button-active-background: #{$pink};
-  --button-active-border: #{$black};
-  --button-border: #{$light-grey};
+  --font-family: "Open Sans", sans-serif;
+  --font-size: 16px;
+  --headers: #{colors.$red};
+  --button-background: #{colors.$off-white};
+  --button-active-background: #{colors.$pink};
+  --button-active-border: #{colors.$black};
+  --button-border: #{colors.$light-grey};
   --button-width: 2.5rem;
   --button-height: 2.5rem;
   --appreciation-width: 2.5rem;
-  --shadow: #{$lighter-grey};
-  --darkBg-text: #{$white};
+  --shadow: #{colors.$lighter-grey};
+  --darkBg-text: #{colors.$white};
   --button-font: 1.25rem;
   --blog-post-wrapper-width: 50vw;
-  --blog-post-border: #{$light-grey};
+  --blog-post-border: #{colors.$light-grey};
 }
