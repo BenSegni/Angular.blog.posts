@@ -12,7 +12,15 @@ import { Subject, takeUntil } from 'rxjs';
 
 import { PostAppreciationService } from '../../services/post-appreciation/post-appreciation.service';
 
-type VoteType = 'appreciated' | 'unappreciated' | null;
+enum voteResultEnum {
+  appreciated = 'appreciated',
+  unappreciated = 'unappreciated',
+}
+
+type VoteType =
+  | voteResultEnum.appreciated
+  | voteResultEnum.unappreciated
+  | null;
 
 @Component({
   selector: 'app-post-appreciation',
@@ -29,6 +37,7 @@ export class PostAppreciationComponent implements OnDestroy {
     () => this.appreciation() && !this.hasNotVoted()
   );
   public voteButtonSelected = signal<VoteType>(null);
+  public voteResultEnum = voteResultEnum;
 
   private _postAppreciationService = inject(PostAppreciationService);
   private destroy$ = new Subject<void>();
@@ -39,15 +48,15 @@ export class PostAppreciationComponent implements OnDestroy {
   }
 
   public appreciated() {
-    this.handleUserInteraction('appreciated');
+    this.handleUserInteraction(voteResultEnum.appreciated);
   }
 
   public unappreciated() {
-    this.handleUserInteraction('unappreciated');
+    this.handleUserInteraction(voteResultEnum.unappreciated);
   }
 
   private handleUserInteraction(voteType: VoteType): void {
-    const postAppreciated = voteType === 'appreciated';
+    const postAppreciated = voteType === voteResultEnum.appreciated;
     this.appreciation.update((currentValue) =>
       postAppreciated ? currentValue + 1 : currentValue - 1
     );

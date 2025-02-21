@@ -1,10 +1,13 @@
-@if(appreciation()) {
+@if(appreciation() >= 0) {
 <div class="post-appreciation-wrapper" role="group" aria-label="Post appreciation controls">
-  <button class="post-appreciation-wrapper__button" (click)="unappreciated()" [disabled]="cannotVote()"
-    [class.active]="voteButtonSelected() === 'unappreciated'" aria-label="Unappreciate this post">&minus;</button>
+  <button class="post-appreciation-wrapper__button" (click)="unappreciated()"
+    [disabled]="cannotVote() || this.appreciation() === 0"
+    [class.active]="voteButtonSelected() === voteResultEnum.unappreciated"
+    aria-label="Unappreciate this post">&minus;</button>
   <p class="post-appreciation-wrapper__like-count" aria-live="polite">{{ appreciation() }}</p>
   <button class="post-appreciation-wrapper__button" (click)="appreciated()" [disabled]="cannotVote()"
-    [class.active]="voteButtonSelected() === 'appreciated'" aria-label="Appreciate this post">&plus;</button>
+    [class.active]="voteButtonSelected() === voteResultEnum.appreciated"
+    aria-label="Appreciate this post">&plus;</button>
 </div>
 } @else {
 <p>There was a problem loading the like count.</p>
