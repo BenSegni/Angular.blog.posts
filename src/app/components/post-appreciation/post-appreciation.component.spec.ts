@@ -41,7 +41,7 @@ describe('PostAppreciationComponent', () => {
       expect(component.voteButtonSelected()).toBe(voteResultEnum.appreciated);
       expect(spyService).toHaveBeenCalledWith('1', 12);
     });
-    it('should increment the likeCount value when appreciate is called', () => {
+    it('should deincrement the likeCount value when unappreciated is called', () => {
       const spyService = spyOn<any>(component['_postAppreciationService'], 'appreciatePost').and.returnValue(
         of({
           content: '',
