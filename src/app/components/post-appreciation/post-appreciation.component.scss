@@ -34,7 +34,8 @@
     &.active {
       background-color: var(--button-active-background);
       color: var(--darkBg-text);
-      border: 2px solid var(--button-active-border);
+      outline: 2px solid var(--button-active-border);
+      outline-offset: .125rem;
     }
   }
 }
