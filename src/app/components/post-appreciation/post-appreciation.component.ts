@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   OnDestroy,
   computed,
@@ -11,10 +12,13 @@ import { Subject, takeUntil } from 'rxjs';
 
 import { PostAppreciationService } from '../../services/post-appreciation/post-appreciation.service';
 
+type VoteType = 'appreciated' | 'unappreciated' | null;
+
 @Component({
   selector: 'app-post-appreciation',
   templateUrl: './post-appreciation.component.html',
   styleUrl: './post-appreciation.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [PostAppreciationService],
 })
 export class PostAppreciationComponent implements OnDestroy {
@@ -24,9 +28,7 @@ export class PostAppreciationComponent implements OnDestroy {
   public cannotVote = computed(
     () => this.appreciation() && !this.hasNotVoted()
   );
-  public voteButtonSelected = signal<'appreciated' | 'unappreciated' | null>(
-    null
-  );
+  public voteButtonSelected = signal<VoteType>(null);
 
   private _postAppreciationService = inject(PostAppreciationService);
   private destroy$ = new Subject<void>();
@@ -37,14 +39,19 @@ export class PostAppreciationComponent implements OnDestroy {
   }
 
   public appreciated() {
-    this.appreciation.update((currentValue) => currentValue + 1);
-    this.voteButtonSelected.set('appreciated');
-    this.sendPostAppreciationUpdate(this.appreciation());
+    this.handleUserInteraction('appreciated');
   }
 
   public unappreciated() {
-    this.appreciation.update((currentValue) => currentValue - 1);
-    this.voteButtonSelected.set('unappreciated');
+    this.handleUserInteraction('unappreciated');
+  }
+
+  private handleUserInteraction(voteType: VoteType): void {
+    const postAppreciated = voteType === 'appreciated';
+    this.appreciation.update((currentValue) =>
+      postAppreciated ? currentValue + 1 : currentValue - 1
+    );
+    this.voteButtonSelected.set(voteType);
     this.sendPostAppreciationUpdate(this.appreciation());
   }
 
