@@ -1,3 +1,4 @@
+@if(appreciation()) {
 <div class="post-appreciation-wrapper" role="group" aria-label="Post appreciation controls">
   <button class="post-appreciation-wrapper__button" (click)="unappreciated()" [disabled]="cannotVote()"
     [class.active]="voteButtonSelected() === 'unappreciated'" aria-label="Unappreciate this post">&minus;</button>
@@ -5,3 +6,6 @@
   <button class="post-appreciation-wrapper__button" (click)="appreciated()" [disabled]="cannotVote()"
     [class.active]="voteButtonSelected() === 'appreciated'" aria-label="Appreciate this post">&plus;</button>
 </div>
+} @else {
+<p>There was a problem loading the like count.</p>
+}
