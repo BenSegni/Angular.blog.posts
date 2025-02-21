@@ -12,7 +12,7 @@ import { Subject, takeUntil } from 'rxjs';
 
 import { PostAppreciationService } from '../../services/post-appreciation/post-appreciation.service';
 
-enum voteResultEnum {
+export enum voteResultEnum {
   appreciated = 'appreciated',
   unappreciated = 'unappreciated',
 }

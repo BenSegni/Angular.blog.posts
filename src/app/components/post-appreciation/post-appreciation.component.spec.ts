@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { PostAppreciationComponent, voteResultEnum } from './post-appreciation.component';
 
-import { PostAppreciationComponent } from './post-appreciation.component';
 import { of } from 'rxjs';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
@@ -38,7 +38,7 @@ describe('PostAppreciationComponent', () => {
       component.appreciated();
 
       expect(component.appreciation()).toBe(12);
-      expect(component.voteButtonSelected()).toBe('appreciated');
+      expect(component.voteButtonSelected()).toBe(voteResultEnum.appreciated);
       expect(spyService).toHaveBeenCalledWith('1', 12);
     });
     it('should increment the likeCount value when appreciate is called', () => {
@@ -54,7 +54,7 @@ describe('PostAppreciationComponent', () => {
       component.unappreciated();
 
       expect(component.appreciation()).toBe(10);
-      expect(component.voteButtonSelected()).toBe('unappreciated');
+      expect(component.voteButtonSelected()).toBe(voteResultEnum.unappreciated);
       expect(spyService).toHaveBeenCalledWith('1', 10);
     });
   });
